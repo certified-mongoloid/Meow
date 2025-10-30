@@ -44,8 +44,7 @@ fn runFile(allocator: std.mem.Allocator, path: []const u8) !void {
 }
 
 const PurrtualMachine = struct {
-    ip: usize,
-    memory: [30000]u16,
+    memory: [30000]u8,
     tokenizer: *Tokenizer,
 
     const State = enum {
@@ -58,8 +57,7 @@ const PurrtualMachine = struct {
 
     pub fn init(tokenizer: *Tokenizer) PurrtualMachine {
         return .{
-            .ip = 0,
-            .memory = [_]u16{0} ** 30000,
+            .memory = [_]u8{0} ** 30000,
             .tokenizer = tokenizer,
         };
     }
@@ -176,7 +174,7 @@ const PurrtualMachine = struct {
         address1: usize,
         third: usize,
     ) void {
-        const val: u16 = @intCast(third);
+        const val: u8 = @intCast(third);
         if (trace) {
             std.debug.print("Arithmetic {s}\n", .{@tagName(op)});
             std.debug.print("Address 0: [{d}] = {d}\n", .{ address0, self.memory[address0] });
@@ -215,7 +213,7 @@ const PurrtualMachine = struct {
         address: usize,
         second: usize,
     ) bool {
-        const val: u16 = @intCast(second);
+        const val: u8 = @intCast(second);
         if (trace) {
             std.debug.print("Conditional {s}\n", .{@tagName(comp)});
         }
@@ -239,7 +237,7 @@ const PurrtualMachine = struct {
         },
         distance: usize,
     ) void {
-        const val: u16 = @intCast(distance);
+        const val: u8 = @intCast(distance);
         if (trace) {
             std.debug.print("Jump {s} {d}\n", .{ @tagName(direction), distance });
         }
@@ -284,7 +282,7 @@ const PurrtualMachine = struct {
             },
             .output => try stdout.print("{d}", .{self.memory[address]}),
             .output_ascii => {
-                const ascii: u8 = @intCast(self.memory[address]);
+                const ascii = self.memory[address];
                 try stdout.print("{c}", .{ascii});
             },
         }
