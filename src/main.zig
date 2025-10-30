@@ -442,7 +442,7 @@ const Tokenizer = struct {
             .invalid => {
                 switch (self.current()) {
                     '\t', '\r', '\n', ' ' => {
-                        result.tag = .invalid;
+                        continue :state .start;
                     },
                     else => {
                         self.index += 1;
