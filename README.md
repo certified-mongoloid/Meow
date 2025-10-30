@@ -2,6 +2,18 @@
 
 Meow
 
+## Requirements
+
+Meow requires Zig, specifically 0.14.1
+
+## Running
+
+To run a Meow program, copy this repo and run the following command
+
+```
+zig build run -- [relative path to .meow file]
+```
+
 ## Meow EBNF
 
 The (* 4 \*), (* x \*), etc, next to the 'meow' non-terminals indicates the length
