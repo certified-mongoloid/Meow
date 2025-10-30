@@ -4,10 +4,10 @@ Meow
 
 ## Meow EBNF
 
-The (* 4 *), (* x *), etc, next to the 'meow' non-terminals indicates the length
+The (* 4 \*), (* x \*), etc, next to the 'meow' non-terminals indicates the length
 of the meow required.
 
-add address = meow (* 5 *), meaning "meoww", "mmeow", "meeow", etc.
+add address = meow (* 5 \*), meaning "meoww", "mmeow", "meeow", etc.
 
 ```
 (* Program Structure *)
